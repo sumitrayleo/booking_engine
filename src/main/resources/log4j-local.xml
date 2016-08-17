@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+
+<log4j:configuration>
+
+	<!-- ASYNC_ORCHESTRATION_LOG -->
+	<appender name="ORCHESTRATION_ASYNC_LOG" class="org.apache.log4j.AsyncAppender">
+		<param name="BufferSize" value="1500" />
+		<param name="Blocking" value="false" />
+		<appender-ref ref="ORCHESTRATION_FILE_LOG" />
+		<appender-ref ref="ORCHESTRATION_CONSOLE_LOG" />
+		<appender-ref ref="ORCHESTRATION_ROLLING_LOG_ERROR" />
+	</appender>
+
+	<appender name="ORCHESTRATION_EXECUTOR_ASYNC_LOG" class="org.apache.log4j.AsyncAppender">
+		<param name="BufferSize" value="1500" />
+		<param name="Blocking" value="false" />
+		<appender-ref ref="ORCHESTRATION_EXECUTOR_LOG" />
+	</appender>
+
+	<!-- redirects to the common orchestration log file -->
+	<appender name="ORCHESTRATION_FILE_LOG" class="org.apache.log4j.FileAppender">
+		<param name="File"
+			value="${catalina.base}/logs/poc_orchestration.log" />
+		<param name="Append" value="true" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern"
+				value="[%t] %d{dd MMM yyyy HH:mm:ss:SSS} | %c | %-5p | RequestId:[%X{Ehi-CSMA-Request-Id}] - %m \n" />
+		</layout>
+		<filter
+			class="com.ehi.msi.enterprisecarshare.logger.filter.ExceptionLoggableFilter">
+			<param name="deniable" value="true" /><!-- With this parameter set 
+				as true, the Loggable exceptions will not be redirected to orchestration 
+				log file -->
+		</filter>
+	</appender>
+
+	<!-- Console Logger -->
+	<appender name="ORCHESTRATION_CONSOLE_LOG" class="org.apache.log4j.ConsoleAppender">
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern"
+				value="[%t] %d{dd MMM yyyy HH:mm:ss:SSS} | %c | %-5p | RequestId:[%X{Ehi-CSMA-Request-Id}] - %m\n" />
+		</layout>
+		<filter
+			class="com.ehi.msi.enterprisecarshare.logger.filter.ExceptionLoggableFilter">
+			<param name="deniable" value="true" /><!-- With this parameter set 
+				as true, the Loggable exceptions will not be redirected to console -->
+		</filter>
+	</appender>
+
+	<!-- Webservice Exceptions are logged to a separate error log file -->
+	<appender name="ORCHESTRATION_ROLLING_LOG_ERROR" class="org.apache.log4j.FileAppender">
+		<param name="File" value="${catalina.base}/logs/poc_error.log" />
+		<param name="Threshold" value="ERROR" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern"
+				value="[%t] %d{dd MMM yyyy HH:mm:ss:SSS} | %c | %-5p | RequestId:[%X{Ehi-CSMA-Request-Id}] - %m\n" />
+		</layout>
+		<filter
+			class="com.ehi.msi.enterprisecarshare.logger.filter.ExceptionLoggableFilter">
+			<param name="deniable" value="false" /><!-- With this parameter 
+				set as false, the Loggable exceptions will only be redirected to error log 
+				file -->
+		</filter>
+	</appender>
+
+	<!-- redirects to the thread specific log file -->
+	<appender name="ORCHESTRATION_EXECUTOR_LOG" class="org.apache.log4j.FileAppender">
+		<param name="File" value="${catalina.base}/logs/carshare_msi_executor.log" />
+		<param name="Append" value="true" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern"
+				value="[%t] %d{dd MMM yyyy HH:mm:ss:SSS} | %c | %-5p |- %m \n" />
+		</layout>
+	</appender>
+
+	<!-- Autovera stats Category -->
+	<logger name="com.ehi.autovera.client.AutoveraClientImpl"
+		additivity="false">
+		<level value="INFO" />
+		<appender-ref ref="ORCHESTRATION_ASYNC_LOG" />
+	</logger>
+
+	<!-- Spring Category -->
+	<logger name="org.springframework" additivity="false">
+		<level value="INFO" />
+		<appender-ref ref="ORCHESTRATION_ASYNC_LOG" />
+	</logger>
+
+	<!-- Dozer Category -->
+	<logger name="org.dozer" additivity="false">
+		<level value="WARN" />
+		<appender-ref ref="ORCHESTRATION_ASYNC_LOG" />
+	</logger>
+
+	<!-- The root logger is of warn level, but the MSI performance timing logs 
+		are set in Info level, so creating a separate category for the interceptor -->
+	<logger
+		name="com.ehi.msi.enterprisecarshare.web.interceptor.LoggingInterceptor"
+		additivity="false">
+		<level value="INFO" />
+		<appender-ref ref="ORCHESTRATION_ASYNC_LOG" />
+	</logger>
+
+	<logger name="com.ehi.msi.enterprisecarshare.executor"
+		additivity="false">
+		<level value="INFO" />
+		<appender-ref ref="ORCHESTRATION_EXECUTOR_ASYNC_LOG" />
+	</logger>
+
+	<!-- Root Category -->
+	<root>
+		<priority value="WARN" />
+		<appender-ref ref="ORCHESTRATION_ASYNC_LOG" />
+	</root>
+
+</log4j:configuration>

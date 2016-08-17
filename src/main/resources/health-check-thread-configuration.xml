@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- Every thread corresponds to a group, and it can be stopped from scheduling 
+	either at the group level or at an instance level using the attribute enabled="true" 
+	or "false". Keeping enabled=false at the group level will allow you to skip 
+	all the threads under that group from getting scheduled. For skipping only 
+	one thread, the enabled attribute has to be set at the instance level -->
+	
+<scheduledConfiguration>
+	<task group="AV" enabled="false">
+
+		<instance enabled="true">
+			<name>wecar</name>
+			<successRate>5</successRate>
+			<errorRate>3</errorRate>
+			<initialDelay>1</initialDelay>
+			<timeUnit>minutes</timeUnit>
+			<identifier>FR</identifier>
+			<countryCode>US</countryCode>
+		</instance>
+
+		<instance enabled="true">
+			<name>drivemint</name>
+			<successRate>5</successRate>
+			<errorRate>3</errorRate>
+			<initialDelay>1</initialDelay>
+			<timeUnit>minutes</timeUnit>
+			<identifier>FR</identifier>
+			<countryCode>US</countryCode>
+		</instance>
+
+		<instance enabled="true">
+			<name>enterprisecarshare</name>
+			<successRate>5</successRate>
+			<errorRate>3</errorRate>
+			<initialDelay>1</initialDelay>
+			<timeUnit>minutes</timeUnit>
+			<identifier>FR</identifier>
+			<countryCode>US</countryCode>
+		</instance>
+
+		<instance enabled="true">
+			<name>phillycarshare</name>
+			<successRate>5</successRate>
+			<errorRate>3</errorRate>
+			<initialDelay>1</initialDelay>
+			<timeUnit>minutes</timeUnit>
+			<identifier>FR</identifier>
+			<countryCode>US</countryCode>
+		</instance>
+
+		<instance enabled="true">
+			<name>wecar</name>
+			<successRate>5</successRate>
+			<errorRate>3</errorRate>
+			<initialDelay>1</initialDelay>
+			<timeUnit>minutes</timeUnit>
+			<identifier>FR</identifier>
+			<countryCode>GB</countryCode>
+		</instance>
+
+		<instance enabled="true">
+			<name>wecar</name>
+			<successRate>5</successRate>
+			<errorRate>3</errorRate>
+			<initialDelay>1</initialDelay>
+			<timeUnit>minutes</timeUnit>
+			<identifier>FR</identifier>
+			<countryCode>CA</countryCode>
+		</instance>
+
+		<instance enabled="true">
+			<name>autoshare</name>
+			<successRate>5</successRate>
+			<errorRate>3</errorRate>
+			<initialDelay>1</initialDelay>
+			<timeUnit>minutes</timeUnit>
+			<identifier>FR</identifier>
+			<countryCode>CA</countryCode>
+		</instance>
+
+		<instance enabled="true">
+			<name>igo</name>
+			<successRate>5</successRate>
+			<errorRate>3</errorRate>
+			<initialDelay>1</initialDelay>
+			<timeUnit>minutes</timeUnit>
+			<identifier>FR</identifier>
+			<countryCode>US</countryCode>
+		</instance>
+
+	</task>
+
+	<task group="DQ" enabled="false">
+		<instance enabled="true">
+			<name />
+			<successRate>5</successRate>
+			<errorRate>3</errorRate>
+			<initialDelay>1</initialDelay>
+			<timeUnit>minutes</timeUnit>
+			<identifier>FR</identifier>
+			<countryCode />
+		</instance>
+	</task>
+
+	<task group="LRD" enabled="true">
+		<instance enabled="true">
+			<name />
+			<successRate>5</successRate>
+			<errorRate>3</errorRate>
+			<initialDelay>1</initialDelay>
+			<timeUnit>minutes</timeUnit>
+			<identifier>FR</identifier>
+			<countryCode />
+		</instance>
+	</task>
+
+	<task group="AEM" enabled="true">
+		<instance enabled="true">
+			<name />
+			<successRate>5</successRate>
+			<errorRate>3</errorRate>
+			<initialDelay>1</initialDelay>
+			<timeUnit>minutes</timeUnit>
+			<identifier>FR</identifier>
+			<countryCode />
+		</instance>
+	</task>
+
+	<task group="APPSEC" enabled="false">
+		<instance enabled="true">
+			<name />
+			<successRate>5</successRate>
+			<errorRate>3</errorRate>
+			<initialDelay>1</initialDelay>
+			<timeUnit>minutes</timeUnit>
+			<identifier>FR</identifier>
+			<countryCode />
+		</instance>
+	</task>
+</scheduledConfiguration>
