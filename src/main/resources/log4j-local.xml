@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+
+<log4j:configuration>
+
+	<!-- ASYNC_ORCHESTRATION_LOG -->
+	<appender name="ORCHESTRATION_ASYNC_LOG" class="org.apache.log4j.AsyncAppender">
+		<param name="BufferSize" value="1500" />
+		<param name="Blocking" value="false" />
+		<appender-ref ref="ORCHESTRATION_FILE_LOG" />
+		<appender-ref ref="ORCHESTRATION_CONSOLE_LOG" />
+		<appender-ref ref="ORCHESTRATION_ROLLING_LOG_ERROR" />
+	</appender>
+
+	<!-- redirects to the common orchestration log file -->
+	<appender name="ORCHESTRATION_FILE_LOG" class="org.apache.log4j.FileAppender">
+		<param name="File"
+			value="${catalina.base}/logs/poc_orchestration.log" />
+		<param name="Append" value="true" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern"
+				value="[%t] %d{dd MMM yyyy HH:mm:ss:SSS} | %c | %-5p | RequestId:[%X{Booking-Request-Id}] - %m \n" />
+		</layout>
+	</appender>
+
+	<!-- Console Logger -->
+	<appender name="ORCHESTRATION_CONSOLE_LOG" class="org.apache.log4j.ConsoleAppender">
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern"
+				value="[%t] %d{dd MMM yyyy HH:mm:ss:SSS} | %c | %-5p | RequestId:[%X{Booking-Request-Id}] - %m\n" />
+		</layout>
+	</appender>
+
+	<!-- Webservice Exceptions are logged to a separate error log file -->
+	<appender name="ORCHESTRATION_ROLLING_LOG_ERROR" class="org.apache.log4j.FileAppender">
+		<param name="File" value="${catalina.base}/logs/poc_error.log" />
+		<param name="Threshold" value="ERROR" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern"
+				value="[%t] %d{dd MMM yyyy HH:mm:ss:SSS} | %c | %-5p | RequestId:[%X{Booking-Request-Id}] - %m\n" />
+		</layout>
+	</appender>
+
+	<!-- Spring Category -->
+	<logger name="org.springframework" additivity="false">
+		<level value="INFO" />
+		<appender-ref ref="ORCHESTRATION_ASYNC_LOG" />
+	</logger>
+
+	<logger
+		name="com.cognizant.orchestration.web.interceptor.LoggingInterceptor"
+		additivity="false">
+		<level value="INFO" />
+		<appender-ref ref="ORCHESTRATION_ASYNC_LOG" />
+	</logger>
+
+	<!-- Root Category -->
+	<root>
+		<priority value="INFO" />
+		<appender-ref ref="ORCHESTRATION_ASYNC_LOG" />
+	</root>
+
+</log4j:configuration>

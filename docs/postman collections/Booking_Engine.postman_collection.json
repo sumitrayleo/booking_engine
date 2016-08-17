@@ -1,0 +1,37 @@
+{
+	"variables": [],
+	"info": {
+		"name": "Booking_Engine",
+		"_postman_id": "eb52d390-ffbd-2a6e-6c9e-a65fc2f2f3f1",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Test Services",
+			"description": "",
+			"item": [
+				{
+					"name": "Test Login",
+					"request": {
+						"url": "{{RootUrl}}/booking-engine/api/booking/login",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n \"username\": \"admin\",\r\n \"password\": \"test\"\r\n}\r\n"
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
