@@ -56,7 +56,7 @@
 
 	<!-- Root Category -->
 	<root>
-		<priority value="WARN" />
+		<priority value="INFO" />
 		<appender-ref ref="ORCHESTRATION_ASYNC_LOG" />
 	</root>
 
