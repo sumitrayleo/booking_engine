@@ -10,7 +10,7 @@
 	</context-param>
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
-		<param-value>com.ehi.msi.enterprisecarshare.spring</param-value>
+		<param-value>com.cognizant.orchestration.spring</param-value>
 	</context-param>
 
 	<!-- Creates the Spring Container shared by all Servlets and Filters -->

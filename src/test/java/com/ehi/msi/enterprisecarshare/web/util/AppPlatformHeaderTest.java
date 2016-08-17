@@ -4,7 +4,8 @@ import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mock.web.MockHttpServletRequest;
 
-import com.ehi.msi.enterprisecarshare.exception.InvalidAppPlatformException;
+import com.cognizant.orchestration.exception.InvalidAppPlatformException;
+import com.cognizant.orchestration.web.util.AppPlatformHeader;
 import com.ehi.msi.test.AbstractSpringTest;
 
 public class AppPlatformHeaderTest extends AbstractSpringTest {

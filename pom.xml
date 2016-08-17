@@ -357,7 +357,7 @@
 				<configuration>
 					<url>http://127.0.0.1:8080/manager/html</url>
 					<server>TomcatServer</server>
-					<path>/carshare-msi</path>
+					<path>/booking-engine</path>
 					<contextReloadable>true</contextReloadable>
 					<systemProperties>
 						<carshareAutoveraTarget>tst</carshareAutoveraTarget>
@@ -378,7 +378,7 @@
 				<configuration>
 					<url>http://127.0.0.1:8080/manager/html</url>
 					<server>TomcatServer</server>
-					<path>/carshare-msi</path>
+					<path>/booking-engine</path>
 					<contextReloadable>true</contextReloadable>
 					<systemProperties>
 						<carshareAutoveraTarget>tst</carshareAutoveraTarget>
@@ -399,7 +399,7 @@
 				<version>${maven.surefire.version}</version>
 				<configuration>
 					<excludes>
-						<exclude>com/ehi/**/*IntegrationTest.*</exclude>
+						<exclude>com/cognizant/**/*IntegrationTest.*</exclude>
 					</excludes>
 				</configuration>
 			</plugin>

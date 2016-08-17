@@ -6,8 +6,9 @@ import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mock.web.MockHttpServletRequest;
 
-import com.ehi.msi.enterprisecarshare.dto.LoginRS;
-import com.ehi.msi.enterprisecarshare.dto.LoginRequest;
+import com.cognizant.orchestration.dto.LoginRS;
+import com.cognizant.orchestration.dto.LoginRequest;
+import com.cognizant.orchestration.web.controller.AuthenticationController;
 import com.ehi.msi.test.AbstractSpringTest;
 
 @Ignore

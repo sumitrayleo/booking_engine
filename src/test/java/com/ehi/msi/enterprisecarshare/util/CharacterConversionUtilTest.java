@@ -2,6 +2,7 @@ package com.ehi.msi.enterprisecarshare.util;
 
 import org.junit.Test;
 
+import com.cognizant.orchestration.util.CharacterConversionUtil;
 import com.ehi.msi.test.AbstractSpringTest;
 
 public class CharacterConversionUtilTest extends AbstractSpringTest {

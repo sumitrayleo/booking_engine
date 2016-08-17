@@ -7,6 +7,7 @@ import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mock.web.MockHttpServletResponse;
 
+import com.cognizant.orchestration.web.controller.StatusController;
 import com.ehi.msi.test.AbstractSpringTest;
 
 /**

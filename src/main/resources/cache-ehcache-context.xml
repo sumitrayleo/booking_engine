@@ -6,7 +6,7 @@
            http://www.springframework.org/schema/cache http://www.springframework.org/schema/cache/spring-cache.xsd"
 	profile="dev">
 
-	<description>The Spring context for the carshare-msi caching</description>
+	<description>The Spring context for the booking engine caching</description>
 
 	<!-- EhCache -->
 	<cache:annotation-driven cache-manager="cacheManager" />
