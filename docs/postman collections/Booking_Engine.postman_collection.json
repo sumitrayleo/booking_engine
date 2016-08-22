@@ -21,6 +21,16 @@
 								"key": "Content-Type",
 								"value": "application/json",
 								"description": ""
+							},
+							{
+								"key": "Booking-API-Key",
+								"value": "1Q7VbsO93CPDMxTyzYp0ADnXG56gaRymAsp3vRiTcfw",
+								"description": ""
+							},
+							{
+								"key": "appPlatform",
+								"value": "android",
+								"description": ""
 							}
 						],
 						"body": {
