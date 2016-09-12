@@ -1,13 +1,15 @@
 package com.cognizant.orchestration.dto;
 
 public class EmptyResponse {
-    private String ok;
 
-    public String getOK() {
-        return ok;
+    private String success;
+
+    public String getSuccess() {
+        return success;
     }
 
-    public void setOK(String ok) {
-        this.ok = ok;
+    public void setSuccess(String success) {
+        this.success = success;
     }
+
 }

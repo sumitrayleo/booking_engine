@@ -1,5 +1,9 @@
 package com.cognizant.orchestration.spring;
 
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.Map;
+
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.ComponentScan.Filter;
@@ -31,4 +35,9 @@ public class BookingApplConfig {
         return new XStream();
     }
 
+    @Bean
+    public Map<String,String> deviceDetailsMap() {
+        final Map<String,String> deviceMap = new HashMap<String,String>();
+        return Collections.synchronizedMap(deviceMap);
+    }
 }
