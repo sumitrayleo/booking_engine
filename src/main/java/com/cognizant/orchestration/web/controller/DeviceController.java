@@ -14,8 +14,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.cognizant.orchestration.dto.EmptyResponse;
 import com.cognizant.orchestration.dto.RegisterDeviceRequest;
+import com.cognizant.orchestration.dto.RegisterDeviceResponse;
 import com.cognizant.orchestration.exception.BookingApplException;
-import com.cognizant.orchestration.util.DeviceDetailsConstant;
+import com.cognizant.orchestration.util.ApplicationConstant;
 import com.wordnik.swagger.annotations.ApiParam;
 
 /**
@@ -40,29 +41,34 @@ public class DeviceController {
         if (ObjectUtils.isEmpty(registerDeviceRequest)) {
             throw new BookingApplException("Please specifiy device registration request details");
         }
-        deviceDetailsMap.put(registerDeviceRequest.getAppName(), registerDeviceRequest.getDeviceId());
+        deviceDetailsMap.put(registerDeviceRequest.getDeviceId(), ApplicationConstant.DEVICE_ACTIVE_Y);
         final EmptyResponse response = new EmptyResponse();
-        response.setSuccess(DeviceDetailsConstant.DEVICE_REGISTERED_SUCCESS_MSG);
+        response.setSuccess(ApplicationConstant.DEVICE_REGISTERED_SUCCESS_MSG);
         return response;
     }
 
     /**
      * Return the device Id by app Name
      * 
-     * @param appName
+     * @param deviceId
      * @return device Id
      * @throws BookingApplException
      */
     @RequestMapping(value = "/api/booking/device/info", method = RequestMethod.GET)
-    public String getDeviceId(@ApiParam(value = "Get Device Id Request") @RequestParam final String appName) {
-        if (StringUtils.isBlank(appName)) {
+    public RegisterDeviceResponse getDeviceId(@ApiParam(value = "Get Device Id Request") @RequestParam final String deviceId) {
+    	RegisterDeviceResponse registerDeviceResponse = new RegisterDeviceResponse();
+        if (StringUtils.isBlank(deviceId)) {
             throw new BookingApplException("Please specifiy an app name");
         }
-        final String deviceId = deviceDetailsMap.get(appName);
-        if (StringUtils.isEmpty(deviceId)) {
-            return DeviceDetailsConstant.DEVICE_NOT_FOUND_MSG;
+        final String status = deviceDetailsMap.get(deviceId);
+        registerDeviceResponse.setDeviceId(deviceId);
+        if ("Y".equals(status)) {
+        	registerDeviceResponse.setSuccess(true);
         } else {
-            return String.format(DeviceDetailsConstant.DEVICE_FOUND,deviceId);
+        	registerDeviceResponse.setSuccess(false);
+        	registerDeviceResponse.setMessage(ApplicationConstant.DEVICE_NOT_FOUND_MSG);
         }
+        
+        return registerDeviceResponse;
     }
 }

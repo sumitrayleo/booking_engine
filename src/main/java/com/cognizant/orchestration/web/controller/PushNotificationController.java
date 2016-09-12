@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.cognizant.orchestration.dto.EmptyResponse;
 import com.cognizant.orchestration.dto.PushNotificationRequest;
 import com.cognizant.orchestration.exception.BookingApplException;
-import com.cognizant.orchestration.util.DeviceDetailsConstant;
+import com.cognizant.orchestration.util.ApplicationConstant;
 import com.wordnik.swagger.annotations.ApiParam;
 
 /**
@@ -32,7 +32,7 @@ public class PushNotificationController {
             throw new BookingApplException("Please specifiy push notification request details");
         }
         final EmptyResponse response = new EmptyResponse();
-        response.setSuccess(DeviceDetailsConstant.PUSH_NOTIFY_SUCCESS_MSG);
+        response.setSuccess(ApplicationConstant.PUSH_NOTIFY_SUCCESS_MSG);
         return response;
     }
 
