@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.cognizant.orchestration.dto.EmptyResponse;
+import com.cognizant.orchestration.dto.BaseResponse;
 import com.cognizant.orchestration.dto.RegisterDeviceRequest;
 import com.cognizant.orchestration.dto.RegisterDeviceResponse;
 import com.cognizant.orchestration.exception.BookingApplException;
@@ -20,8 +20,8 @@ import com.cognizant.orchestration.util.ApplicationConstant;
 import com.wordnik.swagger.annotations.ApiParam;
 
 /**
- * Rest Controller class for handling device related services like registration, lookup etc. 
- *
+ * Rest Controller class for handling device related services like registration, lookup etc.
+ * 
  */
 @RestController
 public class DeviceController {
@@ -36,14 +36,15 @@ public class DeviceController {
      * @return success message
      */
     @RequestMapping(value = "/api/booking/device/info", method = RequestMethod.POST)
-    public EmptyResponse registerDevice(
+    public BaseResponse registerDevice(
         @ApiParam(value = "Register Device Request") @RequestBody final RegisterDeviceRequest registerDeviceRequest) {
         if (ObjectUtils.isEmpty(registerDeviceRequest)) {
             throw new BookingApplException("Please specifiy device registration request details");
         }
         deviceDetailsMap.put(registerDeviceRequest.getDeviceId(), ApplicationConstant.DEVICE_ACTIVE_Y);
-        final EmptyResponse response = new EmptyResponse();
-        response.setSuccess(ApplicationConstant.DEVICE_REGISTERED_SUCCESS_MSG);
+        final BaseResponse response = new BaseResponse();
+        response.setSuccess(true);
+        response.setMessage(ApplicationConstant.DEVICE_REGISTERED_SUCCESS_MSG);
         return response;
     }
 
@@ -56,19 +57,18 @@ public class DeviceController {
      */
     @RequestMapping(value = "/api/booking/device/info", method = RequestMethod.GET)
     public RegisterDeviceResponse getDeviceId(@ApiParam(value = "Get Device Id Request") @RequestParam final String deviceId) {
-    	RegisterDeviceResponse registerDeviceResponse = new RegisterDeviceResponse();
+        RegisterDeviceResponse registerDeviceResponse = new RegisterDeviceResponse();
         if (StringUtils.isBlank(deviceId)) {
             throw new BookingApplException("Please specifiy an app name");
         }
         final String status = deviceDetailsMap.get(deviceId);
-        registerDeviceResponse.setDeviceId(deviceId);
-        if ("Y".equals(status)) {
-        	registerDeviceResponse.setSuccess(true);
+        if (ApplicationConstant.DEVICE_ACTIVE_Y.equals(status)) {
+            registerDeviceResponse.setDeviceId(deviceId);
+            registerDeviceResponse.setSuccess(true);
         } else {
-        	registerDeviceResponse.setSuccess(false);
-        	registerDeviceResponse.setMessage(ApplicationConstant.DEVICE_NOT_FOUND_MSG);
+            registerDeviceResponse.setSuccess(false);
+            registerDeviceResponse.setMessage(ApplicationConstant.DEVICE_NOT_FOUND_MSG);
         }
-        
         return registerDeviceResponse;
     }
 }

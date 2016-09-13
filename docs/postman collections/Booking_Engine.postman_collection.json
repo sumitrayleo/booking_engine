@@ -1,137 +1,80 @@
 {
-	"variables": [],
-	"info": {
-		"name": "Booking_Engine",
-		"_postman_id": "24481024-f683-0b87-c6de-281eef30edf7",
-		"description": "",
-		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
-	},
-	"item": [
+	"id": "b28a1643-9260-2b92-961a-be471d6d1ab2",
+	"name": "Booking_Engine",
+	"description": "",
+	"order": [],
+	"folders": [
 		{
+			"id": "75645a4f-26dc-0f9c-5862-2b545fef55c7",
 			"name": "Test Services",
 			"description": "",
-			"item": [
-				{
-					"name": "Test Login",
-					"request": {
-						"url": "{{RootUrl}}/booking-engine/api/booking/login",
-						"method": "POST",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
-							},
-							{
-								"key": "Booking-API-Key",
-								"value": "1Q7VbsO93CPDMxTyzYp0ADnXG56gaRymAsp3vRiTcfw",
-								"description": ""
-							},
-							{
-								"key": "appPlatform",
-								"value": "android",
-								"description": ""
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n \"username\": \"admin\",\r\n \"password\": \"test\"\r\n}\r\n"
-						},
-						"description": ""
-					},
-					"response": []
-				},
-				{
-					"name": "Register Device Information",
-					"request": {
-						"url": "{{RootUrl}}/booking-engine/api/booking/device/info",
-						"method": "POST",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
-							},
-							{
-								"key": "Booking-API-Key",
-								"value": "1Q7VbsO93CPDMxTyzYp0ADnXG56gaRymAsp3vRiTcfw",
-								"description": ""
-							},
-							{
-								"key": "appPlatform",
-								"value": "android",
-								"description": ""
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n \"deviceId\": \"1234\",\r\n \"appName\": \"EHI\"\r\n}\r\n"
-						},
-						"description": ""
-					},
-					"response": []
-				},
-				{
-					"name": "Retrieve Device Information",
-					"request": {
-						"url": "{{RootUrl}}/booking-engine/api/booking/device/info?appName=EHI",
-						"method": "GET",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
-							},
-							{
-								"key": "Booking-API-Key",
-								"value": "1Q7VbsO93CPDMxTyzYp0ADnXG56gaRymAsp3vRiTcfw",
-								"description": ""
-							},
-							{
-								"key": "appPlatform",
-								"value": "android",
-								"description": ""
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"description": ""
-					},
-					"response": []
-				},
-				{
-					"name": "Send Push Notification",
-					"request": {
-						"url": "{{RootUrl}}/booking-engine/api/booking/notify/info",
-						"method": "POST",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
-							},
-							{
-								"key": "Booking-API-Key",
-								"value": "1Q7VbsO93CPDMxTyzYp0ADnXG56gaRymAsp3vRiTcfw",
-								"description": ""
-							},
-							{
-								"key": "appPlatform",
-								"value": "android",
-								"description": ""
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"memberId\":\"123456\",\n    \"deviceId\":\"1234\",\n    \"latitude\":\"65.7\",\n    \"longitude\":\"87.6\",\n    \"identifier\":\"Car_Rental\"\n}"
-						},
-						"description": ""
-					},
-					"response": []
-				}
-			]
+			"order": [
+				"2272a0da-c925-5b03-605f-1d5c627c3724",
+				"3e6042ae-5ac1-601b-0d69-914662fe00ae",
+				"6dde8da1-397a-3121-af30-04f71b85c226",
+				"4fab01fa-71be-882f-2a59-b972be0ed26c"
+			],
+			"owner": 0
+		}
+	],
+	"owner": 0,
+	"hasRequests": true,
+	"requests": [
+		{
+			"id": "2272a0da-c925-5b03-605f-1d5c627c3724",
+			"name": "Test Login",
+			"description": "",
+			"collectionId": "b28a1643-9260-2b92-961a-be471d6d1ab2",
+			"method": "POST",
+			"headers": "Content-Type: application/json\nBooking-API-Key: 1Q7VbsO93CPDMxTyzYp0ADnXG56gaRymAsp3vRiTcfw\nappPlatform: android",
+			"dataMode": "raw",
+			"data": [],
+			"rawModeData": "{\r\n \"username\": \"admin\",\r\n \"password\": \"test\"\r\n}\r\n",
+			"url": "{{RootUrl}}/booking-engine/api/booking/login",
+			"responses": [],
+			"folder": "75645a4f-26dc-0f9c-5862-2b545fef55c7"
+		},
+		{
+			"id": "3e6042ae-5ac1-601b-0d69-914662fe00ae",
+			"name": "Register Device Information",
+			"description": "",
+			"collectionId": "b28a1643-9260-2b92-961a-be471d6d1ab2",
+			"method": "POST",
+			"headers": "Content-Type: application/json\nBooking-API-Key: 1Q7VbsO93CPDMxTyzYp0ADnXG56gaRymAsp3vRiTcfw\nappPlatform: android",
+			"dataMode": "raw",
+			"data": [],
+			"rawModeData": "{\r\n \"deviceId\": \"1234\",\r\n \"appName\": \"EHI\"\r\n}\r\n",
+			"url": "{{RootUrl}}/booking-engine/api/booking/device/info",
+			"responses": [],
+			"folder": "75645a4f-26dc-0f9c-5862-2b545fef55c7"
+		},
+		{
+			"id": "4fab01fa-71be-882f-2a59-b972be0ed26c",
+			"name": "Send Push Notification",
+			"description": "",
+			"collectionId": "b28a1643-9260-2b92-961a-be471d6d1ab2",
+			"method": "POST",
+			"headers": "Content-Type: application/json\nBooking-API-Key: 1Q7VbsO93CPDMxTyzYp0ADnXG56gaRymAsp3vRiTcfw\nappPlatform: android",
+			"dataMode": "raw",
+			"data": [],
+			"rawModeData": "{\n    \"memberId\":\"123456\",\n    \"deviceId\":\"1234\",\n    \"latitude\":\"65.7\",\n    \"longitude\":\"87.6\",\n    \"identifier\":\"Car_Rental\"\n}",
+			"url": "{{RootUrl}}/booking-engine/api/booking/notify/info",
+			"responses": [],
+			"folder": "75645a4f-26dc-0f9c-5862-2b545fef55c7"
+		},
+		{
+			"id": "6dde8da1-397a-3121-af30-04f71b85c226",
+			"name": "Retrieve Device Information",
+			"description": "",
+			"collectionId": "b28a1643-9260-2b92-961a-be471d6d1ab2",
+			"method": "GET",
+			"headers": "Content-Type: application/json\nBooking-API-Key: 1Q7VbsO93CPDMxTyzYp0ADnXG56gaRymAsp3vRiTcfw\nappPlatform: android",
+			"dataMode": "raw",
+			"data": [],
+			"rawModeData": "",
+			"url": "{{RootUrl}}/booking-engine/api/booking/device/info?appName=EHI",
+			"responses": [],
+			"folder": "75645a4f-26dc-0f9c-5862-2b545fef55c7"
 		}
 	]
 }

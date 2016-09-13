@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.cognizant.orchestration.dto.EmptyResponse;
+import com.cognizant.orchestration.dto.BaseResponse;
 import com.cognizant.orchestration.dto.PushNotificationRequest;
 import com.cognizant.orchestration.exception.BookingApplException;
 import com.cognizant.orchestration.util.ApplicationConstant;
@@ -26,13 +26,14 @@ public class PushNotificationController {
      * @return success message
      */
     @RequestMapping(value = "/api/booking/notify/info", method = RequestMethod.POST)
-    public EmptyResponse pushNotify(
+    public BaseResponse pushNotify(
         @ApiParam(value = "Triggers a push notification request") @RequestBody final PushNotificationRequest notificationRequest) {
         if (ObjectUtils.isEmpty(notificationRequest)) {
             throw new BookingApplException("Please specifiy push notification request details");
         }
-        final EmptyResponse response = new EmptyResponse();
-        response.setSuccess(ApplicationConstant.PUSH_NOTIFY_SUCCESS_MSG);
+        final BaseResponse response = new BaseResponse();
+        response.setMessage(ApplicationConstant.PUSH_NOTIFY_SUCCESS_MSG);
+        response.setSuccess(true);
         return response;
     }
 
